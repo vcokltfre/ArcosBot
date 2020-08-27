@@ -3,8 +3,12 @@ from discord.ext import commands
 from bot.bot import run
 
 cogs = [
-    "bot.cogs.utility.general",
-    "bot.cogs.core.status"
+    "utility.general",
+    "core.status",
+    "core.misc"
+
 ]
+
+cogs = ["bot.cogs." + cog for cog in cogs]
 
 run(cogs, prefix=["a?", "arcos "], help_command=commands.MinimalHelpCommand())
