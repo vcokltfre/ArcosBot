@@ -33,7 +33,7 @@ class General(commands.Cog):
                 self.bot.logger.error(f"Cog loading: failed to load {cog}: {e}")
 
         self.bot.logger.info(f"Loaded cog(s):\n{log}")
-        await ctx.send(log)
+        await ctx.author.send(log)
 
     @cogs_group.command(name="reload")
     async def reload_cogs(self, ctx: commands.Context, *cognames):
@@ -49,7 +49,7 @@ class General(commands.Cog):
                 self.bot.logger.error(f"Cog reloading: failed to reload {cog}: {e}")
 
         self.bot.logger.info(f"Reloaded cog(s):\n{log}")
-        await ctx.send(log)
+        await ctx.author.send(log)
 
     @cogs_group.command(name="unload")
     async def unload_cogs(self, ctx: commands.Context, *cognames):
@@ -67,7 +67,7 @@ class General(commands.Cog):
                 self.bot.logger.error(f"Cog unloading: failed to unload {cog}: {e}")
 
         self.bot.logger.info(f"Unloaded cog(s):\n{log}")
-        await ctx.send(log)
+        await ctx.author.send(log)
 
     @commands.command(name="restart", aliases=["reboot", "shutdown"])
     @is_dev()
