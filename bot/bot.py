@@ -11,7 +11,7 @@ class Bot(commands.Bot):
     """A subclassed version of commands.Bot"""
 
     def __init__(self, debug=False, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(command_prefix=self.get_prefix, *args, **kwargs)
         self.debug = debug
         self.logger = Logger(name, log_level, log_type)
         self.logger.info(f"Starting {name}")
@@ -20,6 +20,18 @@ class Bot(commands.Bot):
         except Exception as e:
             self.logger.critical(str(e))
             raise Exception("Rethink Error. Start the database.")
+        self.prefixes = {}
+
+    async def get_prefix(self, message: discord.Message):
+        gid = str(message.guild.id)
+        if gid in self.prefixes:
+            return self.prefixes[gid]
+        gconf = self.api.get_by_uid("guilds", "guild_id", gid)
+        if not gconf:
+            self.prefixes[gid] = "a?"
+            return "a?"
+        self.prefixes[gid] = gconf["prefix"]
+        return gconf["prefix"]
 
     def load_cogs(self, cogs: list):
         """Loads a list of cogs"""
@@ -40,14 +52,13 @@ class Bot(commands.Bot):
         additional = "" if not self.debug else " (DEBUG)"
         self.logger.info(f"Cog loading complete! (Total: {success + fail} | Loaded: {success} | Failed: {fail}){additional}")
 
-    async def on_error(self, event: str):
+    async def on_error(self, event: str, *args, **kwargs):
         self.logger.error(f"Runtime error: {event}")
 
 
-def run(cogs: list, debug=False, prefix: list = ["!"], help_command = None):
+def run(cogs: list, debug=False, help_command = None):
     bot = Bot(
         debug=debug,
-        command_prefix=prefix,
         max_messages=10000,
         help_command=help_command
     )

@@ -6,10 +6,11 @@ cogs = [
     "utility.general",
     "core.status",
     "core.misc",
+    "core.config",
     "fun.catpics"
 
 ]
 
 cogs = ["bot.cogs." + cog for cog in cogs]
 
-run(cogs, prefix=["a?", "arcos "], help_command=commands.MinimalHelpCommand())
+run(cogs, help_command=commands.MinimalHelpCommand())
