@@ -5,7 +5,7 @@ from pathlib import Path
 
 from bot.bot import Bot
 
-symbol = "1234567890!\"£$%^&*()[]{};#':~@,./<>?\\|`¬"
+symbol = "1234567890!\"£$%^&*()[]{};#':~@,./<>?\\|`¬ "
 alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 valid = alpha + symbol
 
@@ -32,6 +32,7 @@ class Misc(commands.Cog):
 
     @config_group.command(name="prefix")
     async def cfg_prefix(self, ctx: commands.Context, prefix: str = None):
+        prefix = " ".join(prefix)
         gid = str(ctx.guild.id)
         if not prefix:
             pref = "a?"
