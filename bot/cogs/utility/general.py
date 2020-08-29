@@ -73,6 +73,7 @@ class General(commands.Cog):
     @is_dev()
     async def restart(self, ctx: commands.Context):
         """Make the bot logout"""
+        await ctx.channel.send(f"Restarting {name}")
         self.bot.logger.info(f"Shutting down {name}")
         await self.bot.close()
 
