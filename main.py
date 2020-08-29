@@ -5,7 +5,8 @@ from bot.bot import run
 cogs = [
     "utility.general",
     "core.status",
-    "core.misc"
+    "core.misc",
+    "fun.catpics"
 
 ]
 
