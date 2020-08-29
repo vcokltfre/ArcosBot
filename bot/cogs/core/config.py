@@ -10,8 +10,8 @@ alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 valid = alpha + symbol
 
 
-class Misc(commands.Cog):
-    """Miscellaneous commands for Arcos"""
+class Config(commands.Cog):
+    """Customizability for Arcos"""
 
     def __init__(self, bot: Bot):
         self.bot = bot
@@ -27,11 +27,13 @@ class Misc(commands.Cog):
     @commands.group(name="config")
     @commands.has_permissions(manage_guild=True)
     async def config_group(self, ctx: commands.Context):
+        """Change Arcos config options"""
         if ctx.invoked_subcommand == None:
             pass
 
     @config_group.command(name="prefix")
     async def cfg_prefix(self, ctx: commands.Context, prefix: str = None):
+        """View or change your guild prefix"""
         prefix = " ".join(prefix)
         gid = str(ctx.guild.id)
         if not prefix:
@@ -49,4 +51,4 @@ class Misc(commands.Cog):
 
 
 def setup(bot: Bot):
-    bot.add_cog(Misc(bot))
+    bot.add_cog(Config(bot))
