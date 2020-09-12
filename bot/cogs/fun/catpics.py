@@ -15,7 +15,7 @@ class CatPics(commands.Cog):
         self.bot = bot
 
     @commands.command(name="cat", aliases=["catpic"])
-    @commands.cooldown(1, 15, commands.BucketType.guild)
+    @commands.cooldown(1, 6, commands.BucketType.user)
     async def get_cat(self, ctx: commands.Context):
         """Get a random image of a cat"""
         response = requests.get(api_location, headers={"x-api-token": cat_token})
