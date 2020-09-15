@@ -8,10 +8,10 @@ cogs = [
     "core.misc",
     "core.config",
     "fun.catpics",
-    "fun.dogpics",
-    "jishaku"
+    "fun.dogpics"
 ]
 
 cogs = ["bot.cogs." + cog for cog in cogs]
+cogs.append("jishaku")
 
 run(cogs, help_command=commands.MinimalHelpCommand())
