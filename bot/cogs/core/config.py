@@ -4,6 +4,7 @@ from discord.ext import commands
 from pathlib import Path
 
 from bot.bot import Bot
+from bot.utils.checks import is_dev
 
 symbol = "1234567890!\"£$%^&*()[]{};#':~@,./<>?\\|`¬ "
 alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -25,7 +26,7 @@ class Config(commands.Cog):
         return True
 
     @commands.group(name="config")
-    @commands.has_permissions(manage_guild=True)
+    @commands.check_any(commands.has_permissions(manage_guild=True), is_dev())
     async def config_group(self, ctx: commands.Context):
         """Change Arcos config options"""
         if ctx.invoked_subcommand == None:
