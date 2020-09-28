@@ -23,6 +23,8 @@ class Bot(commands.Bot):
         self.prefixes = {}
 
     async def get_prefix(self, message: discord.Message):
+        if message.startswith("ac?"):
+            return "ac?"
         gid = str(message.guild.id)
         if gid in self.prefixes:
             return self.prefixes[gid]
