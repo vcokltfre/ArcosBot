@@ -15,7 +15,7 @@ class CharInfo(commands.Cog):
     @commands.command(name="chars")
     async def get_cat(self, ctx: commands.Context, *, data: str):
         """Get char info for a sequence of chars"""
-        text = "```css"
+        text = "```css\n"
         for letter in data:
             text += f"{ord(letter)}: {name(letter)}\n"
         await ctx.send(text + "```")
