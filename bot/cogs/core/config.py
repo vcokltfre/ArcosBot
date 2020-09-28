@@ -33,9 +33,8 @@ class Config(commands.Cog):
             pass
 
     @config_group.command(name="prefix")
-    async def cfg_prefix(self, ctx: commands.Context, prefix: str = None):
+    async def cfg_prefix(self, ctx: commands.Context, *, prefix: str = None):
         """View or change your guild prefix"""
-        prefix = " ".join(prefix)
         gid = str(ctx.guild.id)
         if not prefix:
             pref = "a?"
