@@ -4,6 +4,7 @@ from bot.bot import run
 
 cogs = [
     "utility.general",
+    "utility.charinfo",
     "core.status",
     "core.misc",
     "core.config",
