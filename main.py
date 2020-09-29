@@ -9,7 +9,8 @@ cogs = [
     "core.misc",
     "core.config",
     "fun.catpics",
-    "fun.dogpics"
+    "fun.dogpics",
+    "fun.cables"
 ]
 
 cogs = ["bot.cogs." + cog for cog in cogs]
