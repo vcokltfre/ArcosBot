@@ -63,7 +63,7 @@ def run(cogs: list, debug=False, help_command = None):
         debug=debug,
         max_messages=10000,
         help_command=help_command,
-        intents=discord.Intents()
+        intents=discord.Intents.all()
     )
 
     bot.load_cogs(cogs)
