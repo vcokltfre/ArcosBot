@@ -35,6 +35,7 @@ class General(commands.Cog):
 
         self.bot.logger.info(f"Loaded cog(s):\n{log}")
         await ctx.author.send(log)
+        await ctx.message.add_reaction("✅")
 
     @cogs_group.command(name="reload")
     async def reload_cogs(self, ctx: commands.Context, *cognames):
@@ -51,6 +52,7 @@ class General(commands.Cog):
 
         self.bot.logger.info(f"Reloaded cog(s):\n{log}")
         await ctx.author.send(log)
+        await ctx.message.add_reaction("✅")
 
     @cogs_group.command(name="unload")
     async def unload_cogs(self, ctx: commands.Context, *cognames):
@@ -69,6 +71,7 @@ class General(commands.Cog):
 
         self.bot.logger.info(f"Unloaded cog(s):\n{log}")
         await ctx.author.send(log)
+        await ctx.message.add_reaction("✅")
 
     @commands.command(name="restart", aliases=["reboot", "shutdown"])
     @is_dev()
