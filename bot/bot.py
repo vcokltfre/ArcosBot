@@ -58,11 +58,12 @@ class Bot(commands.Bot):
         self.logger.error(f"Runtime error: {event}")
 
 
-def run(cogs: list, debug=False, help_command = None, intents=discord.Intents.all()):
+def run(cogs: list, debug=False, help_command = None):
     bot = Bot(
         debug=debug,
         max_messages=10000,
-        help_command=help_command
+        help_command=help_command,
+        intents=discord.Intents()
     )
 
     bot.load_cogs(cogs)
