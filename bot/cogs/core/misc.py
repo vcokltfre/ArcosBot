@@ -4,6 +4,7 @@ from discord.ext import commands
 from pathlib import Path
 
 from bot.bot import Bot
+from bot.utils.checks import is_dev
 
 
 class Misc(commands.Cog):
@@ -23,6 +24,13 @@ class Misc(commands.Cog):
 
         embed = discord.Embed(title="Arcos Cedits", description=desc, color=0x8FFF3F)
         await ctx.send(embed=embed)
+
+    @commands.command(name="mimic")
+    @is_dev()
+    async def mimic(self, ctx: commands.Context, member: discord.Member, *, text):
+        webhook = await ctx.channel.create_webhook(name=member.name, avatar=str(member.avatar_url))
+        await webhook.send(content=text)
+        await webhook.delete()
 
 
 def setup(bot: Bot):
