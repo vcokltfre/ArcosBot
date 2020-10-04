@@ -24,6 +24,7 @@ class Currency(commands.Cog):
         if not member:
             member = str(ctx.author.id)
         mdata = self.bot.api.get_by_uid("users", "user_id", member)
+        self.bot.logger.info(f"Currency SET: Data: {mdata}")
         cdata = {"balance": amount}
         if mdata and "currency" in mdata:
             cdata = mdata["currency"]
