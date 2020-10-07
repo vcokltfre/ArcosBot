@@ -10,7 +10,8 @@ cogs = [
     "core.config",
     "fun.catpics",
     "fun.dogpics",
-    "fun.cables"
+    "fun.cables",
+    "music.temp"
 ]
 
 cogs = ["bot.cogs." + cog for cog in cogs]
