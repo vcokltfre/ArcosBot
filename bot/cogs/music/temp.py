@@ -21,7 +21,7 @@ class Music(commands.Cog):
         self.bot = bot
 
         if not hasattr(bot, 'lavalink'):
-            bot.lavalink = lavalink.Client(689160870143590621)
+            bot.lavalink = lavalink.Client(748476058675970079)
             bot.lavalink.add_node(ll_host, ll_port, ll_pass, ll_region, ll_node)
             bot.add_listener(bot.lavalink.voice_update_handler, 'on_socket_response')
 
@@ -64,7 +64,7 @@ class Music(commands.Cog):
             await self.connect_to(ctx.guild.id, str(ctx.author.voice.channel.id))
         else:
             if int(player.channel_id) != ctx.author.voice.channel.id:
-                raise commands.CommandInvokeError('You need to be in my voicechannel.')
+                raise commands.CommandInvokeError('You need to be in my voice channel.')
 
     async def track_hook(self, event):
         if isinstance(event, lavalink.events.QueueEndEvent):
